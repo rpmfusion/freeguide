@@ -1,0 +1,46 @@
+diff -up freeguide-0.10.10/ant/compile.xml.orig freeguide-0.10.10/ant/compile.xml
+--- freeguide-0.10.10/ant/compile.xml.orig	2008-09-04 02:31:39.000000000 +0200
++++ freeguide-0.10.10/ant/compile.xml	2009-09-13 07:47:22.000000000 +0200
+@@ -11,13 +11,6 @@
+ 
+     <target name="jars-win" depends="jars-lin, jar-xmltv-win"/>
+ 
+-    <taskdef name="retroweaver" classname="com.rc.retroweaver.ant.RetroWeaverTask">
+-        <classpath>
+-            <fileset dir="ant/tasks" includes="**/*.jar"/>
+-            <pathelement location="retroweaver-all-1.2.5.jar"/>
+-        </classpath>
+-    </taskdef>
+-
+     <target name="compile"
+         description="Compile all the .java files into the build dir.">
+ 
+@@ -34,7 +27,6 @@
+             </classpath>
+             <!-- Uncomment to show warnings <compilerarg value="-Xlint:unchecked"/>-->
+           </javac>
+-        <retroweaver srcdir="${build}/classes" target="1.4"/>
+     </target>
+ 
+     <target name="compile-in-place" depends="prepare"
+diff -up freeguide-0.10.10/ant/prepare.xml.orig freeguide-0.10.10/ant/prepare.xml
+--- freeguide-0.10.10/ant/prepare.xml.orig	2008-01-18 22:32:31.000000000 +0100
++++ freeguide-0.10.10/ant/prepare.xml	2009-09-13 07:47:13.000000000 +0200
+@@ -56,17 +56,4 @@
+     </target>
+ 
+ 
+-    <taskdef name="jalopy" classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
+-        <classpath>
+-            <fileset dir="ant/tasks" includes="*.jar"/>
+-        </classpath>
+-    </taskdef>
+-
+-    <target name="format-sources" depends="prepare">
+-    	<jalopy convention="scripts\source_formatting\freeguide-jalopy.xml" encoding="UTF-8" fileformat="UNIX" failOnError="true" loglevel="ERROR">
+-    		<fileset dir="src">
+-	    		<include name="**/*.java"/>
+-    		</fileset>
+-    	</jalopy>
+-    </target>
+ </project>

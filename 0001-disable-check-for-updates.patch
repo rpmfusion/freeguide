@@ -1,0 +1,62 @@
+From e2622d46b6ca8ce2009ce7394588d351a4ed2b18 Mon Sep 17 00:00:00 2001
+From: Iain Arnell <iarnell@gmail.com>
+Date: Wed, 23 Jun 2010 07:47:45 +0200
+Subject: [PATCH] disable check for updates
+
+---
+ .../program/freeguide/options/OptionsDialog.java   |    8 --------
+ .../program/freeguide/viewer/MainController.java   |    6 ------
+ .../program/freeguide/wizard/FirstTimeWizard.java  |    1 -
+ 3 files changed, 0 insertions(+), 15 deletions(-)
+
+diff --git a/src/freeguide/plugins/program/freeguide/options/OptionsDialog.java b/src/freeguide/plugins/program/freeguide/options/OptionsDialog.java
+index 3f255c6..dcecbc8 100644
+--- a/src/freeguide/plugins/program/freeguide/options/OptionsDialog.java
++++ b/src/freeguide/plugins/program/freeguide/options/OptionsDialog.java
+@@ -181,14 +181,6 @@ public class OptionsDialog extends FGDialog implements TreeSelectionListener,
+ 
+         trunk.add( horzViewer );
+ 
+-        OptionPanel panel = new PrivacyOptionPanel( this );
+-
+-        DefaultMutableTreeNode privateLeaf =
+-            new DefaultMutableTreeNode( panel );
+-        panel.construct(  );
+-
+-        trunk.add( privateLeaf );
+-
+         DefaultMutableTreeNode advancedBranch =
+             new DefaultMutableTreeNode(
+                 Application.getInstance(  ).getLocalizedMessage( "advanced" ) );
+diff --git a/src/freeguide/plugins/program/freeguide/viewer/MainController.java b/src/freeguide/plugins/program/freeguide/viewer/MainController.java
+index 372bb9f..e441fdc 100644
+--- a/src/freeguide/plugins/program/freeguide/viewer/MainController.java
++++ b/src/freeguide/plugins/program/freeguide/viewer/MainController.java
+@@ -236,12 +236,6 @@ public class MainController extends BaseModule implements IApplication
+ 
+         applicationFrame = mainFrame;
+ 
+-        // Check the FreeGuide version
+-        if( !"no".equals( FreeGuide.config.privacyInfo ) )
+-        {
+-            new VersionCheckerThread( getApplicationFrame(  ) ).start(  );
+-        }
+-
+         //checkForNoData(  );
+         mainFrame.waitForClose(  );
+ 
+diff --git a/src/freeguide/plugins/program/freeguide/wizard/FirstTimeWizard.java b/src/freeguide/plugins/program/freeguide/wizard/FirstTimeWizard.java
+index 8ed4f9d..94e7dcf 100644
+--- a/src/freeguide/plugins/program/freeguide/wizard/FirstTimeWizard.java
++++ b/src/freeguide/plugins/program/freeguide/wizard/FirstTimeWizard.java
+@@ -86,7 +86,6 @@ public class FirstTimeWizard
+         panels.add( createFirstPanel( upgrade ) );
+         panels.add( createRegionPanel(  ) );
+         panels.add( createWorkingDirectoryPanel(  ) );
+-        panels.add( createPrivacyPanel(  ) );
+         panels.add( createInstallPanel(  ) );
+ 
+         wizardFrame =
+-- 
+1.7.0.1
+

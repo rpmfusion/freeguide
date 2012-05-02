@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed May 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.11-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Wed Jun 23 2010 Iain Arnell <iarnell@gmail.com> 0.11-1
 - update to latest upstream version
 - remove no-jalopy-retroweaver patch

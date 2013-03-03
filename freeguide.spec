@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.11-3
+- Mass rebuilt for Fedora 19 Features
+
 * Wed May 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.11-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 

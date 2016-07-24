@@ -1,6 +1,6 @@
 Name:           freeguide
-Version:        0.11
-Release:        4%{?dist}
+Version:        0.11.1
+Release:        1%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -10,17 +10,15 @@ Source0:        http://downloads.sourceforge.net/freeguide-tv/freeguide-%{versio
 Source1:        freeguide.desktop
 # completely disable the automatic check for updates
 Patch0:         0001-disable-check-for-updates.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
 BuildRequires:  java-devel >= 1:1.6.0
-BuildRequires:  jpackage-utils
+BuildRequires:  javapackages-tools
 BuildRequires:  ant
-BuildRequires:  ant-nodeps
 BuildRequires:  desktop-file-utils
 
 Requires:       java >= 1:1.6.0
-Requires:       jpackage-utils
+Requires:       javapackages-tools
 Requires:       xmltv xmltv-gui
 
 %description
@@ -47,12 +45,11 @@ ant jar
 
 
 %install
-rm -rf %{buildroot}
 ant -Dinstall_bin_dir=%{buildroot}/%{_bindir} \
     -Dinstall_share_dir=%{buildroot}/%{_datadir} \
-    -Dinstall_doc_dir=%{buildroot}/%{_defaultdocdir}/%{name}-%{version} \
+    -Dinstall_doc_dir=%{buildroot}/%{_defaultdocdir}/%{name} \
     -Dinstall_real_dir=%{_datadir}/freeguide \
-    -Dinstall_real_doc_dir=%{_defaultdocdir}/%{name}-%{version} \
+    -Dinstall_real_doc_dir=%{_defaultdocdir}/%{name} \
     install
 
 install -d -m 0755 %{buildroot}%{_javadir}/%{name}
@@ -61,19 +58,16 @@ for jar in $(find %{buildroot}%{_datadir}/%{name} -type f -name '*.jar'); do
     ln -s %{_javadir}/%{name}/$(basename ${jar}) ${jar}
 done
 
-rm -rf %{buildroot}%{_defaultdocdir}/%{name}
+#rm -rf %{buildroot}%{_defaultdocdir}/%{name}
 
 desktop-file-install \
     --dir %{buildroot}%{_datadir}/applications \
     %{SOURCE1}
 
-%clean
-rm -rf %{buildroot}
-
-
 %files
 %defattr(0644,root,root,0755)
-%doc doc/COPYING doc-bin/*
+%doc doc-bin/*
+%license doc/COPYING
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.*
 %{_javadir}/%{name}
@@ -83,6 +77,14 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Jul 24 2016 Sérgio Basto <sergio@serjux.com> - 0.11.1-1
+- Update freeguide to 0.11.1
+- Drop ant-nodeps dependency as it's long been provided by ant based on:
+  https://lists.fedoraproject.org/pipermail/scm-commits/Week-of-Mon-20130429/1007603.html
+- Depend on javapackages-tools instead of jpackage-utils to conform to new Java
+  guidelines
+- Modernize spec, add license tag
+
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 0.11-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 

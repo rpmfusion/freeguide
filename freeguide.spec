@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -77,6 +77,9 @@ desktop-file-install \
 
 
 %changelog
+* Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.11.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Sun Jul 24 2016 Sérgio Basto <sergio@serjux.com> - 0.11.1-1
 - Update freeguide to 0.11.1
 - Drop ant-nodeps dependency as it's long been provided by ant based on:

@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -77,6 +77,9 @@ desktop-file-install \
 
 
 %changelog
+* Mon Aug 17 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.11.1-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Tue Feb 04 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.11.1-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 

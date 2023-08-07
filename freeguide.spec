@@ -1,12 +1,12 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
 License:        GPLv2
 URL:            http://www.artificialworlds.net/freeguide/Main/HomePage
-Source0:        http://downloads.sourceforge.net/freeguide-tv/freeguide-%{version}.tar.gz
+Source0:        https://codeberg.org/andybalaam/FreeGuide/archive/%{version}.tar.gz#/freeguide-%{version}.tar.gz
 Source1:        freeguide.desktop
 # completely disable the automatic check for updates
 Patch0:         0001-disable-check-for-updates.patch
@@ -16,6 +16,7 @@ BuildRequires:  java-devel >= 1:1.6.0
 BuildRequires:  javapackages-tools
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
+BuildRequires:  sed
 
 Requires:       java >= 1:1.6.0
 Requires:       javapackages-tools
@@ -31,18 +32,18 @@ favorites list.
 It works with listings for many countries.  Check the web site
 freeguide-tv.sf.net for details.
 
-
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -n %{name} -p1
 
 find . -name '*.jar' -exec rm -f '{}' \;
 
 rm -rf xmltv
 
+# Java source option 5 is no longer supported, bump it higher
+sed -i 's/1.5/1.7/g' build.xml
+
 %build
 ant jar
-
 
 %install
 ant -Dinstall_bin_dir=%{buildroot}/%{_bindir} \
@@ -75,8 +76,12 @@ desktop-file-install \
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 
-
 %changelog
+* Mon Aug 07 2023 Andrew Bauer <zonexpertconsulting@outlook.com> - 0.11.1-11
+- Bump min java source to 7. Fixes FTBS
+- Update source url to new location
+- Use autosetup macro
+
 * Wed Aug 02 2023 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.11.1-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 

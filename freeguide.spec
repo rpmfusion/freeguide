@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -39,8 +39,8 @@ find . -name '*.jar' -exec rm -f '{}' \;
 
 rm -rf xmltv
 
-# Java source option 5 is no longer supported, bump it higher
-sed -i 's/1.5/1.7/g' build.xml
+# Java source option 5/7 is no longer supported, bump it higher
+sed -i 's/1.5/1.8/g' build.xml
 
 %build
 ant jar
@@ -77,6 +77,9 @@ desktop-file-install \
 %{_datadir}/pixmaps/*
 
 %changelog
+* Sat Oct 26 2024 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.11.1-14
+- Bump min java source to 8. Fixes FTBS
+
 * Fri Aug 02 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.11.1-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 

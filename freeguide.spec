@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        A TV Guide
 
 Group:          Applications/Multimedia
@@ -77,6 +77,9 @@ desktop-file-install \
 %{_datadir}/pixmaps/*
 
 %changelog
+* Tue Jan 28 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.11.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
 * Sat Oct 26 2024 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.11.1-14
 - Bump min java source to 8. Fixes FTBS
 

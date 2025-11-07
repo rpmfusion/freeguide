@@ -3,7 +3,6 @@ Version:        0.11.1
 Release:        16%{?dist}
 Summary:        A TV Guide
 
-Group:          Applications/Multimedia
 License:        GPLv2
 URL:            http://www.artificialworlds.net/freeguide/Main/HomePage
 Source0:        https://codeberg.org/andybalaam/FreeGuide/archive/%{version}.tar.gz#/freeguide-%{version}.tar.gz
@@ -66,7 +65,6 @@ desktop-file-install \
     %{SOURCE1}
 
 %files
-%defattr(0644,root,root,0755)
 %doc doc-bin/*
 %license doc/COPYING
 %attr(0755,root,root) %{_bindir}/%{name}

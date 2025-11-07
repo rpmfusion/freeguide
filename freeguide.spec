@@ -58,7 +58,6 @@ for jar in $(find %{buildroot}%{_datadir}/%{name} -type f -name '*.jar'); do
     ln -s %{_javadir}/%{name}/$(basename ${jar}) ${jar}
 done
 
-#rm -rf %{buildroot}%{_defaultdocdir}/%{name}
 
 desktop-file-install \
     --dir %{buildroot}%{_datadir}/applications \

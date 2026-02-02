@@ -1,6 +1,6 @@
 Name:           freeguide
 Version:        0.11.1
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        A TV Guide
 
 License:        GPLv2
@@ -74,6 +74,9 @@ desktop-file-install \
 %{_datadir}/pixmaps/*
 
 %changelog
+* Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.11.1-17
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
 * Sun Jul 27 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.11.1-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
 
